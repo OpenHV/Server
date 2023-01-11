@@ -1,0 +1,19 @@
+pipeline:
+  build:
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      platforms: linux/386
+      repo: codeberg.org/${CI_REPO_OWNER}/openhv-386
+      registry: codeberg.org
+      tags: latest
+      auto_tag: true
+      username: ${CI_REPO_OWNER}
+      password:
+        from_secret: cb_token
+      build_args: 
+        - LANG_ARG=en_US.UTF-8
+        - TIMEZONE_ARG=Etc/UTC
+        - OPENHV_VERSION_ARG=20221228
+    when:
+      event: tag
+      branch: main
