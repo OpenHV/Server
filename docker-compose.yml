@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  minetest-mineclone2:
+    image: minetest-mineclone2:0.81.1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        LANG_ARG: en_US.UTF-8
+        TIMEZONE_ARG: Etc/UTC
+        MINETEST_VERSION_ARG: 5.6.1
+        IRRLICHT_VERSION_ARG: 1.9.0mt9
+        MINECLONE2_VERSION_ARG: 0.81.1
+    restart: always
+    ports:
+      - 30000:30000/udp
+      - 30000:30000/tcp
+    volumes:
+      - data:/srv/minetest/data
+    env_file: ./.env.prod
+
+volumes:
+  data:

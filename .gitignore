@@ -1,0 +1,9 @@
+# Configurations
+.env.prod
+
+# Builds
+build/
+
+# Backups and Swaps
+*.backup
+*.swp
