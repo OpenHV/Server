@@ -34,7 +34,6 @@ RUN apt-get install -y \
   libsdl2-2.0-0 \
   git \
   build-essential \
-#  libgeoip1 \
   --no-install-recommends
 
 RUN apt-get clean && \
