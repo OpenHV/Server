@@ -13,7 +13,7 @@ pipeline:
       build_args: 
         - LANG_ARG=en_US.UTF-8
         - TIMEZONE_ARG=Etc/UTC
-        - OPENHV_VERSION_ARG=20221228
+        - OPENHV_VERSION_ARG=${CI_COMMIT_TAG}
     when:
       event: tag
       branch: main
