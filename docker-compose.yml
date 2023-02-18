@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   openhv:
-    image: openhv:20221228
+    image: openhv:20230212
     build:
       context: ./
       dockerfile: Dockerfile
