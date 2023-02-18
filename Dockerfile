@@ -27,7 +27,6 @@ RUN apt-get install -y \
   lsb-release \
   curl \
   unzip \
-  python3 \
   libfreetype6 \
   libopenal1 \
   liblua5.1-0 \
