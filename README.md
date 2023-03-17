@@ -1,19 +1,41 @@
-# OpenHV
+# OpenHV Docker
 
-OpenHV server Linux builds.
+[OpenHV](https://github.com/OpenHV/OpenHV) Docker Container based on [Microsoft .NET](https://hub.docker.com/_/microsoft-dotnet)
 
-## Description  
+## Description
 
-This project is motivated by the idea to make easy to deploy OpenHV servers on (GNU/)Linux and provide a base for building in different architectures.
+This makes it easier to deploy OpenHV dedicated servers on Linux with graphics and sound files stripped away.
 
-It is focused in providing a minimal build over each release of OpenHV.
+Run
 
-## Releases
+```
+docker build -t openhv:latest .
+```
 
-Each released build is dependent on 2 main dependencies:
-* [OpenHV](https://github.com/OpenHV/OpenHV)
-* [Mono](https://github.com/mono/mono)
+to compile and
 
-It is focused in order of importance, being the OpenHV game first, as a guide for releasing, or not, a new build based in a new version of each component.
+```
+docker run -it -p 1234:1234 openhv:latest .
+```
 
-Additionally, for the container image, if some vulnerability is found for some component external to these dependencies, a new build will be providing indicating it in the tag and replacing the `latest` version.
+to start an instance with TCP 1234 as the default port.
+
+```
+docker run -it -p 4711:4711 -e "Name=Docker Test Server" -e "ListenPort=4711" openhv:latest
+```
+
+to change server name and TCP network port.
+
+## Configuration
+
+* `-e "Name="` sets the server name.
+* `-e "ListenPort"` changes the TCP port.
+* `-e "AdvertiseOnline=False"` disables master server registration.
+* `-e "Password="` sets the password for a private server.
+* `-e "RequireAuthentication=True"` enforces every player to register at [forum.openra.net](https://forum.openra.net).
+* `-e "ProfileIDBlacklist="` permanently bans players from the server when authentication is required.
+* `-e "ProfileIDWhitelist="` only allows these players when authentication is required for a private server.
+* `-e "EnableSingleplayer=True"` allows matches against bots with only one player.
+* `-e "EnableSyncReports=True"` creates reports on network desync errors.
+* `-e "EnableGeoIP=False"` disables the feature where country names are fetched based on network addresses.
+* `-e "ShareAnonymizedIPs=False"` removes anonymized network addresses from the lobby completely.
