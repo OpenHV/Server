@@ -1,10 +1,14 @@
-# OpenHV Docker
+# OpenHV Server
 
-[OpenHV](https://github.com/OpenHV/OpenHV) Docker Container based on [Microsoft .NET](https://hub.docker.com/_/microsoft-dotnet)
+[OpenHV](https://github.com/OpenHV/OpenHV) Docker container based on [Microsoft .NET image](https://hub.docker.com/_/microsoft-dotnet) makes it easier to deploy OpenHV dedicated servers on Linux with graphics and sound files stripped away.
 
-## Description
+## Usage
 
-This makes it easier to deploy OpenHV dedicated servers on Linux with graphics and sound files stripped away.
+```
+docker run -it -p 1234:1234 -e "Name=My Server" ghcr.io/openhv/server:latest
+```
+
+## Build
 
 Run
 
