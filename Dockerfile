@@ -38,6 +38,9 @@ RUN make \
   TARGETPLATFORM=unix-generic && \
   make version
 
+RUN find mods/hv/bits/ -type f -delete
+RUN rm -rf mods/hv/uibits/*
+
 EXPOSE 1234/tcp
 
 ENTRYPOINT /srv/openhv/application/launch-dedicated.sh
