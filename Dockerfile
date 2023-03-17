@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
 
 RUN apt-get update && \
   apt-get upgrade -y
@@ -42,5 +42,9 @@ RUN find mods/hv/bits/ -type f -delete
 RUN rm -rf mods/hv/uibits/*
 
 EXPOSE 1234/tcp
+
+FROM mcr.microsoft.com/dotnet/runtime:6.0 AS runtime
+
+COPY --from=build /srv/openhv/application /srv/openhv/application
 
 ENTRYPOINT /srv/openhv/application/launch-dedicated.sh
