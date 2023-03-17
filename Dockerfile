@@ -2,25 +2,12 @@ FROM mono:6
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG LANG_ARG
-ARG TIMEZONE_ARG
 ARG OPENHV_VERSION_ARG
 
-ENV LANG=$LANG_ARG
-ENV TIMEZONE=$TIMEZONE_ARG
 ENV OPENHV_VERSION=$OPENHV_VERSION_ARG
 
 RUN apt-get update && \
   apt-get upgrade -y
-
-RUN apt-get install -y locales && \
-  sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
-  dpkg-reconfigure locales && \
-  update-locale LANG=$LANG
-
-RUN apt-get install -y tzdata && \ 
-  ln -sf "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime && \
-  dpkg-reconfigure tzdata
 
 RUN apt-get install -y \
   ca-certificates \
