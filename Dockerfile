@@ -1,10 +1,4 @@
-FROM mono:6
-
-ARG DEBIAN_FRONTEND=noninteractive
-
-ARG OPENHV_VERSION_ARG
-
-ENV OPENHV_VERSION=$OPENHV_VERSION_ARG
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 RUN apt-get update && \
   apt-get upgrade -y
@@ -34,13 +28,13 @@ USER openhv
 WORKDIR /srv/openhv
 
 RUN git clone --depth=1 \
-  -b $OPENHV_VERSION https://github.com/OpenHV/OpenHV.git \
+  -b 20230305 https://github.com/OpenHV/OpenHV.git \
   application
 
 WORKDIR /srv/openhv/application
 
 RUN make \
-  RUNTIME=mono \
+  RUNTIME=net6 \
   TARGETPLATFORM=unix-generic && \
   make version
 
