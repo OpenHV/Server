@@ -39,7 +39,7 @@ RUN make \
   make version
 
 RUN find mods/hv/bits/ -type f -delete
-RUN rm -rf mods/hv/uibits/*
+RUN rm -rf mods/hv/uibits/* sources/ OpenRA.Mods.HV/
 
 EXPOSE 1234/tcp
 
