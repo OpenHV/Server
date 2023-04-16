@@ -33,13 +33,17 @@ to change server name and TCP network port.
 ## Configuration
 
 * `-e "Name="` sets the server name.
+* `-e "Map="` sets the UID of the initial map.
 * `-e "ListenPort"` changes the TCP port.
 * `-e "AdvertiseOnline=False"` disables master server registration.
 * `-e "Password="` sets the password for a private server.
+* `-e "RecordReplays=True"` stores replays server side.
 * `-e "RequireAuthentication=True"` enforces every player to register at [forum.openra.net](https://forum.openra.net).
 * `-e "ProfileIDBlacklist="` permanently bans players from the server when authentication is required.
 * `-e "ProfileIDWhitelist="` only allows these players when authentication is required for a private server.
 * `-e "EnableSingleplayer=True"` allows matches against bots with only one player.
 * `-e "EnableSyncReports=True"` creates reports on network desync errors.
 * `-e "EnableGeoIP=False"` disables the feature where country names are fetched based on network addresses.
+* `-e "EnableLintChecks=False"` disables checks for invalid game rules.
 * `-e "ShareAnonymizedIPs=False"` removes anonymized network addresses from the lobby completely.
+* `-e "FloodLimitJoinCooldown=1000"` sets the cooldown for chat after joining in miliseconds.
