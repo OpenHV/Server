@@ -47,4 +47,5 @@ FROM mcr.microsoft.com/dotnet/runtime:6.0 AS runtime
 
 COPY --from=build /srv/openhv/application /srv/openhv/application
 
-ENTRYPOINT /srv/openhv/application/launch-dedicated.sh
+ENV MOD_SEARCH_PATHS=/srv/openhv/application/mods/
+ENTRYPOINT ["dotnet", "/srv/openhv/application/engine/bin/OpenRA.Server.dll", "Engine.EngineDir=..", "Game.Mod=hv"]
