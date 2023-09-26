@@ -28,7 +28,7 @@ USER openhv
 WORKDIR /srv/openhv
 
 RUN git clone --depth=1 \
-  -b 20230820 https://github.com/OpenHV/OpenHV.git \
+  -b 20230917 https://github.com/OpenHV/OpenHV.git \
   application
 
 WORKDIR /srv/openhv/application
