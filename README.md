@@ -1,4 +1,4 @@
-# OpenHV Server
+# OpenHV Server [![size](https://ghcr-badge.egpl.dev/openhv/server/size)](https://github.com/openhv/server/pkgs/container/server)
 
 [OpenHV](https://github.com/OpenHV/OpenHV) Docker container based on [Microsoft .NET image](https://hub.docker.com/_/microsoft-dotnet) makes it easier to deploy OpenHV dedicated servers on Linux with graphics and sound files stripped away.
 
