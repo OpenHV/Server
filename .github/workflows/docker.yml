@@ -3,20 +3,11 @@ name: Publish Docker Image
 on:
   push:
     tags:
-    - '*'
+      - '*'
 
 jobs:
-  build-and-push-image:
-    strategy:
-      matrix:
-        include:
-          - platform: linux/amd64
-            runner: ubuntu-24.04
-            arch: amd64
-          - platform: linux/arm64
-            runner: ubuntu-24.04-arm
-            arch: arm64
-    runs-on: ${{ matrix.runner }}
+  build:
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
@@ -53,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
